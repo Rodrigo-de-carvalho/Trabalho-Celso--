@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        O "parent" do Spring Boot já traz versões testadas e compatíveis de todas
+        as bibliotecas. Assim a gente não precisa ficar escolhendo a versão de cada
+        dependência na mão (ele cuida disso pra gente).
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <!-- Identificação do nosso projeto (grupo, nome e versão) -->
+    <groupId>com.clinica</groupId>
+    <artifactId>odontologica</artifactId>
+    <version>1.0.0</version>
+    <name>clinica-odontologica-backend</name>
+    <description>API REST da Clínica Odontológica (Spring Boot + MySQL)</description>
+
+    <properties>
+        <!-- Versão do Java usada para compilar o projeto -->
+        <java.version>17</java.version>
+    </properties>
+
+    <dependencies>
+        <!--
+            spring-boot-starter-web: traz tudo para criar uma API REST
+            (servidor Tomcat embutido, controllers, conversão para JSON, etc.).
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--
+            spring-boot-starter-data-jpa: traz o JPA/Hibernate, que é o que
+            transforma nossas classes Java (entidades) em tabelas do banco e
+            faz as queries por baixo dos panos.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!--
+            mysql-connector-j: o "driver" que permite o Java conversar com o MySQL.
+            (runtime = só é necessário quando o programa está rodando, não para compilar)
+        -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+                Plugin do Spring Boot: é ele que faz o comando "mvn spring-boot:run"
+                funcionar e gera o .jar executável do projeto.
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

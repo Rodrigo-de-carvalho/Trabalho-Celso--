@@ -1,0 +1,19 @@
+# Dependências instaladas pelo npm (são baixadas de novo com "npm install")
+node_modules
+
+# Pasta gerada pelo build de produção (react-scripts build)
+/build
+
+# Variáveis de ambiente locais com segredos (estas NÃO sobem para o git).
+# O .env (sem .local) é versionado de propósito: ele só guarda a porta (PORT=5173).
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos do sistema operacional / editor
+.DS_Store
+.vscode/*
+.idea

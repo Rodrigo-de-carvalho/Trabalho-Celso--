@@ -1,0 +1,261 @@
+/* ============================================================
+   CSS básico e simples — o objetivo é ser CLARO e fácil de navegar
+   durante a apresentação (não precisa ser bonito, precisa ser organizado).
+   ============================================================ */
+
+/* Reset simples: tira margens padrão e usa o mesmo box-sizing em tudo. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f4f7;
+  color: #222;
+}
+
+/* ---- Barra de navegação no topo ---- */
+.navbar {
+  background-color: #00695c; /* verde escuro (tema clínica) */
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.navbar .titulo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.navbar a:hover {
+  background-color: #00897b;
+}
+
+/* ---- Área principal do conteúdo ---- */
+.conteudo {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+/* ---- Cartões/caixas ---- */
+.card {
+  background-color: #fff;
+  border: 1px solid #dce0e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #00695c;
+}
+
+p.subtitulo {
+  color: #555;
+  margin-bottom: 16px;
+}
+
+/* ---- Formulários ---- */
+.campo {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 8px;
+  border: 1px solid #bcc4cc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Coloca os campos lado a lado quando dá (formulário em grade). */
+.grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+button {
+  background-color: #00695c;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #00897b;
+}
+
+/* ---- Tabelas de listagem ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px solid #dce0e6;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #e0f2f1;
+}
+
+/* ---- Mensagens de erro e sucesso ---- */
+.mensagem-erro {
+  background-color: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.mensagem-sucesso {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+/* Barra de busca */
+.barra-busca {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.barra-busca input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #bcc4cc;
+  border-radius: 4px;
+}
+
+/* Página inicial */
+.lista-passos {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+
+/* ---- Painel/Dashboard (tela inicial) ---- */
+/* Grade de cartões com os números da clínica. */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Cada cartão de número. É um link que leva para a tela correspondente. */
+.stat-card {
+  background-color: #fff;
+  border: 1px solid #dce0e6;
+  border-left: 5px solid #00695c;
+  border-radius: 8px;
+  padding: 18px;
+  text-decoration: none;
+  color: #222;
+  display: block;
+}
+
+.stat-card:hover {
+  background-color: #e0f2f1;
+}
+
+.stat-numero {
+  font-size: 32px;
+  font-weight: bold;
+  color: #00695c;
+}
+
+.stat-rotulo {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Linha de botões de ação rápida. */
+.acoes-rapidas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.acoes-rapidas a {
+  background-color: #00695c;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.acoes-rapidas a:hover {
+  background-color: #00897b;
+}
+
+/* Texto quando uma lista está vazia. */
+.vazio {
+  color: #777;
+  padding: 8px 0;
+}
+
+/* Botão menor, usado dentro das tabelas (ex: "Editar"). */
+.btn-acao {
+  padding: 4px 12px;
+  font-size: 13px;
+  margin-top: 0;
+}
+
+/* Botão de cancelar (cinza, para diferenciar do botão principal verde). */
+.btn-cancelar {
+  background-color: #777;
+  margin-left: 8px;
+}
+
+.btn-cancelar:hover {
+  background-color: #555;
+}
