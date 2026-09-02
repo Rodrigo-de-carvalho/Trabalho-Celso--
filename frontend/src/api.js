@@ -1,7 +1,7 @@
 // ============================================================
 //  api.js — Arquivo centralizado de comunicação com o backend
 // ============================================================
-// Aqui ficam TODAS as funções que chamam a API (o backend Spring Boot).
+// Aqui ficam TODAS as funções que chamam a API (o backend Node.js + Express).
 // Centralizar isso num arquivo só deixa o resto do código mais limpo: as telas
 // só importam a função pronta (ex: criarPaciente) e não precisam saber a URL.
 

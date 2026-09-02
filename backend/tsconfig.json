@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    /* Versão de JavaScript gerada. ES2021 já é entendida por qualquer Node moderno. */
+    "target": "ES2021",
+    "module": "commonjs",
+    "lib": ["ES2021"],
+
+    /* Pasta com o código-fonte TypeScript e pasta onde o JavaScript compilado é gerado. */
+    "rootDir": "src",
+    "outDir": "dist",
+
+    /* O TypeORM usa DECORADORES (@Entity, @Column...) para mapear as classes
+       para tabelas do banco. Estas duas opções ligam esse recurso. */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* "strict" liga todas as checagens de tipo do TypeScript. É o que dá a
+       segurança de pegar erro de digitação/tipo errado ANTES de rodar. */
+    "strict": true,
+    "strictPropertyInitialization": false,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"]
+}

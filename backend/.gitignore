@@ -1,26 +1,11 @@
-# Pasta de build do Maven (arquivos compilados, .class, .jar)
-target/
+# Dependências instaladas pelo npm
+node_modules/
 
-# Arquivos das IDEs
-.idea/
-*.iml
-*.iws
-*.ipr
-.vscode/
-.settings/
-.classpath
-.project
-.factorypath
+# Código JavaScript gerado pelo "npm run build"
+dist/
+
+# Configuração local (senha do banco) — não vai para o Git
+.env
 
 # Logs
-*.log
-
-# Arquivos do sistema operacional
-.DS_Store
-Thumbs.db
-
-# Wrapper do Maven (opcional manter, mas ignoramos a pasta local de cache)
-.mvn/wrapper/maven-wrapper.jar
-
-# Configuração local com a senha real do MySQL (nunca deve ir pro Git)
-application-local.properties
+npm-debug.log*
