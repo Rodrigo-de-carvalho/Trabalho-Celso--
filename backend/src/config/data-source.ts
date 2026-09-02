@@ -12,15 +12,13 @@ import 'reflect-metadata' // obrigatório para os decoradores (@Entity, @Column.
 import * as dotenv from 'dotenv'
 import { DataSource } from 'typeorm'
 
-import { PlanoOdontologico } from '../entity/PlanoOdontologico'
-import { Paciente } from '../entity/Paciente'
-import { Dentista } from '../entity/Dentista'
-import { Procedimento } from '../entity/Procedimento'
-import { Agendamento } from '../entity/Agendamento'
-import { Consulta } from '../entity/Consulta'
-import { Pagamento } from '../entity/Pagamento'
-import { HistoricoClinico } from '../entity/HistoricoClinico'
-import { Agenda } from '../entity/Agenda'
+import { Perfil } from '../entity/Perfil'
+import { Usuario } from '../entity/Usuario'
+import { Psicologo } from '../entity/Psicologo'
+import { ClientePaciente } from '../entity/ClientePaciente'
+import { Vinculo } from '../entity/Vinculo'
+import { Atendimento } from '../entity/Atendimento'
+import { LogAcao } from '../entity/LogAcao'
 
 // Lê o arquivo .env e joga os valores em process.env.
 // Se o arquivo não existir (ex: na máquina do professor), nada quebra: cada
@@ -32,7 +30,7 @@ export const AppDataSource = new DataSource({
   type: 'mysql',
 
   // Endereço do banco: localhost (mesmo PC), porta 3306 (padrão do MySQL),
-  // banco "clinica_odontologica" (o mesmo criado pelo schema.sql).
+  // banco "psigestor" (o mesmo criado pelo schema.sql).
   host: process.env.DB_HOST ?? 'localhost',
   port: Number(process.env.DB_PORT ?? 3306),
 
@@ -43,20 +41,10 @@ export const AppDataSource = new DataSource({
   // pego da variável de ambiente DB_PASSWORD (e se não tiver, assume vazia).
   password: process.env.DB_PASSWORD ?? '',
 
-  database: process.env.DB_NAME ?? 'clinica_odontologica',
+  database: process.env.DB_NAME ?? 'psigestor',
 
   // Lista das classes que representam as tabelas.
-  entities: [
-    PlanoOdontologico,
-    Paciente,
-    Dentista,
-    Procedimento,
-    Agendamento,
-    Consulta,
-    Pagamento,
-    HistoricoClinico,
-    Agenda,
-  ],
+  entities: [Perfil, Usuario, Psicologo, ClientePaciente, Vinculo, Atendimento, LogAcao],
 
   // synchronize = false: o TypeORM NÃO mexe na estrutura do banco.
   // Quem cria as tabelas é o nosso schema.sql (rodado antes, no MySQL Workbench).

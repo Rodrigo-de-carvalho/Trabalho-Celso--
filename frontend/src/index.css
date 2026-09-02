@@ -1,261 +1,576 @@
 /* ============================================================
-   CSS básico e simples — o objetivo é ser CLARO e fácil de navegar
-   durante a apresentação (não precisa ser bonito, precisa ser organizado).
+   index.css — Estilos do PsiGestor
+   ------------------------------------------------------------
+   A folha de estilo é organizada em blocos: primeiro as variáveis de cor,
+   depois os elementos base, os componentes (cartão, tabela, botão) e, no
+   final, as regras RESPONSIVAS que adaptam o layout ao celular.
    ============================================================ */
 
-/* Reset simples: tira margens padrão e usa o mesmo box-sizing em tudo. */
+:root {
+  /* Paleta em tons de azul-esverdeado: transmite calma, adequado ao contexto
+     de saúde mental, e mantém bom contraste com o texto (acessibilidade). */
+  --cor-fundo: #f4f6f8;
+  --cor-superficie: #ffffff;
+  --cor-borda: #dfe4ea;
+  --cor-texto: #1f2d3d;
+  --cor-texto-suave: #667585;
+  --cor-primaria: #2f7d78;
+  --cor-primaria-escura: #24625e;
+  --cor-erro: #b3261e;
+  --cor-erro-fundo: #fdecea;
+  --cor-sucesso: #1e6b3a;
+  --cor-sucesso-fundo: #e7f5ec;
+  --cor-alerta: #8a5a00;
+  --raio: 10px;
+  --sombra: 0 1px 3px rgba(31, 45, 61, 0.08);
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f2f4f7;
-  color: #222;
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* ---- Barra de navegação no topo ---- */
-.navbar {
-  background-color: #00695c; /* verde escuro (tema clínica) */
-  padding: 12px 20px;
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+}
+
+.subtitulo {
+  color: var(--cor-texto-suave);
+  margin: 0 0 16px;
+}
+
+.carregando,
+.vazio {
+  color: var(--cor-texto-suave);
+  text-align: center;
+  padding: 20px;
+}
+
+.texto-apagado {
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+.ajuda {
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+}
+
+/* ---------- Barra superior e menu ---------- */
+
+.barra-superior {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 10px 20px;
 }
 
-.navbar .titulo {
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  margin-right: 20px;
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cor-primaria);
+  text-decoration: none;
 }
 
-.navbar a {
-  color: #fff;
+.marca-icone {
+  font-size: 1.3rem;
+}
+
+.menu {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.menu a {
+  color: var(--cor-texto-suave);
   text-decoration: none;
   padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: var(--raio);
+  font-weight: 500;
 }
 
-.navbar a:hover {
-  background-color: #00897b;
+.menu a:hover {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
-/* ---- Área principal do conteúdo ---- */
+/* .active é aplicado automaticamente pelo NavLink na tela aberta. */
+.menu a.active {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+
+.identificacao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nome-do-usuario {
+  font-weight: 600;
+}
+
+.etiqueta-perfil {
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  color: var(--cor-texto-suave);
+}
+
 .conteudo {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* ---- Cartões/caixas ---- */
-.card {
-  background-color: #fff;
-  border: 1px solid #dce0e6;
-  border-radius: 8px;
+/* ---------- Cartões ---------- */
+
+.cartao {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
   padding: 20px;
   margin-bottom: 20px;
 }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 4px;
+/* ---------- Indicadores ---------- */
+
+.grade-indicadores {
+  display: grid;
+  /* auto-fit + minmax = os cartões se reorganizam sozinhos conforme a largura
+     da tela, sem precisar de vários "media queries". */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-h2 {
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: #00695c;
-}
-
-p.subtitulo {
-  color: #555;
-  margin-bottom: 16px;
-}
-
-/* ---- Formulários ---- */
-.campo {
-  margin-bottom: 12px;
+.indicador {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 14px;
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
-.campo label {
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 4px;
+.indicador-titulo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-.campo input,
-.campo select,
-.campo textarea {
-  padding: 8px;
-  border: 1px solid #bcc4cc;
-  border-radius: 4px;
-  font-size: 14px;
+.indicador-valor {
+  font-size: 1.7rem;
+  font-weight: 700;
 }
 
-/* Coloca os campos lado a lado quando dá (formulário em grade). */
-.grade {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.indicador-detalhe {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
 }
 
-button {
-  background-color: #00695c;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
+.indicador-destaque {
+  border-color: var(--cor-primaria);
+}
+
+.indicador-destaque .indicador-valor {
+  color: var(--cor-primaria);
+}
+
+.indicador-alerta {
+  border-color: var(--cor-alerta);
+}
+
+.indicador-alerta .indicador-valor {
+  color: var(--cor-alerta);
+}
+
+/* ---------- Formulários ---------- */
+
+.formulario {
   margin-top: 8px;
 }
 
-button:hover {
-  background-color: #00897b;
+.grade-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-/* ---- Tabelas de listagem ---- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--cor-texto);
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  /* Contorno visível ao navegar pelo teclado (acessibilidade). */
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 1px;
+}
+
+input[readonly] {
+  background: var(--cor-fundo);
+  color: var(--cor-texto-suave);
+}
+
+.linha-formulario {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.linha-formulario .campo {
+  min-width: 240px;
+}
+
+.linha-botoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.barra-de-filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.barra-de-filtros input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.barra-de-filtros select {
+  width: auto;
+  min-width: 180px;
+}
+
+/* ---------- Botões ---------- */
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: 1px solid transparent;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.botao-primario {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+
+.botao-primario:hover:not(:disabled) {
+  background: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+  background: #fff;
+  color: var(--cor-texto);
+  border-color: var(--cor-borda);
+}
+
+.botao-secundario:hover:not(:disabled) {
+  background: var(--cor-fundo);
+}
+
+.botao-pequeno {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+/* ---------- Tabelas ---------- */
+
+/* Em telas estreitas a tabela rola na horizontal DENTRO deste bloco, em vez de
+   empurrar a página inteira para o lado. */
+.tabela-rolavel {
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 14px;
+  min-width: 640px;
 }
 
 th,
 td {
-  border: 1px solid #dce0e6;
-  padding: 8px;
   text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: middle;
 }
 
 th {
-  background-color: #e0f2f1;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cor-texto-suave);
+  background: var(--cor-fundo);
 }
 
-/* ---- Mensagens de erro e sucesso ---- */
-.mensagem-erro {
-  background-color: #fdecea;
-  color: #b71c1c;
-  border: 1px solid #f5c6cb;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 12px;
+tbody tr:hover {
+  background: #fafbfc;
 }
 
-.mensagem-sucesso {
-  background-color: #e8f5e9;
-  color: #1b5e20;
-  border: 1px solid #c8e6c9;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 12px;
+.linha-inativa {
+  opacity: 0.6;
 }
 
-/* Barra de busca */
-.barra-busca {
+.celula-acoes {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.barra-busca input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #bcc4cc;
-  border-radius: 4px;
-}
-
-/* Página inicial */
-.lista-passos {
-  margin-left: 20px;
-  line-height: 1.8;
-}
-
-/* ---- Painel/Dashboard (tela inicial) ---- */
-/* Grade de cartões com os números da clínica. */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-/* Cada cartão de número. É um link que leva para a tela correspondente. */
-.stat-card {
-  background-color: #fff;
-  border: 1px solid #dce0e6;
-  border-left: 5px solid #00695c;
-  border-radius: 8px;
-  padding: 18px;
-  text-decoration: none;
-  color: #222;
-  display: block;
-}
-
-.stat-card:hover {
-  background-color: #e0f2f1;
-}
-
-.stat-numero {
-  font-size: 32px;
-  font-weight: bold;
-  color: #00695c;
-}
-
-.stat-rotulo {
-  font-size: 14px;
-  color: #555;
-  margin-top: 4px;
-}
-
-/* Linha de botões de ação rápida. */
-.acoes-rapidas {
-  display: flex;
+  gap: 6px;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
 }
 
-.acoes-rapidas a {
-  background-color: #00695c;
+.celula-acoes button {
+  padding: 5px 10px;
+  font-size: 0.83rem;
+}
+
+td select {
+  width: auto;
+  min-width: 130px;
+  padding: 5px 8px;
+}
+
+/* ---------- Etiquetas de status ---------- */
+
+.etiqueta {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-fundo);
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+
+.etiqueta-ativo,
+.etiqueta-confirmado {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+  border-color: #bfe3cd;
+}
+
+.etiqueta-bloqueado,
+.etiqueta-falta {
+  background: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+  border-color: #f3c5c1;
+}
+
+.etiqueta-agendado {
+  background: #eaf1fb;
+  color: #1b4d8f;
+  border-color: #c6d9f2;
+}
+
+.etiqueta-realizado {
+  background: #e9f0ef;
+  color: var(--cor-primaria-escura);
+  border-color: #c2d9d7;
+}
+
+.etiqueta-acao {
+  background: #eef0f3;
+  color: #3b4757;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.72rem;
+}
+
+.etiqueta-voce {
+  margin-left: 6px;
+  font-size: 0.7rem;
+  background: var(--cor-primaria);
   color: #fff;
-  text-decoration: none;
-  padding: 10px 14px;
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+/* ---------- Avisos ---------- */
+
+.aviso-erro,
+.aviso-sucesso {
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+}
+
+.aviso-erro {
+  background: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+  border: 1px solid #f3c5c1;
+}
+
+.aviso-sucesso {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+  border: 1px solid #bfe3cd;
+}
+
+/* ---------- Tela de login ---------- */
+
+.tela-de-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cartao-login {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+}
+
+.marca-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+}
+
+.marca-login h1 {
+  color: var(--cor-primaria);
+  margin: 0;
+}
+
+.cartao-login .campo {
+  margin-bottom: 12px;
+}
+
+.cartao-login .botao-primario {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.dica-de-acesso {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+}
+
+.dica-de-acesso code {
+  background: var(--cor-fundo);
+  padding: 1px 5px;
   border-radius: 4px;
-  font-size: 14px;
 }
 
-.acoes-rapidas a:hover {
-  background-color: #00897b;
+/* ============================================================
+   RESPONSIVIDADE — adaptação para tablets e celulares
+   ============================================================ */
+
+@media (max-width: 780px) {
+  .barra-superior {
+    /* No celular, os itens da barra passam a se empilhar. */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .menu {
+    /* O menu vira uma faixa que rola na horizontal, sem quebrar o layout. */
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .menu a {
+    white-space: nowrap;
+  }
+
+  .identificacao {
+    justify-content: space-between;
+  }
+
+  .conteudo {
+    padding: 14px;
+  }
+
+  .cartao {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
 }
 
-/* Texto quando uma lista está vazia. */
-.vazio {
-  color: #777;
-  padding: 8px 0;
-}
+@media (max-width: 460px) {
+  .grade-indicadores {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
 
-/* Botão menor, usado dentro das tabelas (ex: "Editar"). */
-.btn-acao {
-  padding: 4px 12px;
-  font-size: 13px;
-  margin-top: 0;
-}
-
-/* Botão de cancelar (cinza, para diferenciar do botão principal verde). */
-.btn-cancelar {
-  background-color: #777;
-  margin-left: 8px;
-}
-
-.btn-cancelar:hover {
-  background-color: #555;
+  .indicador-valor {
+    font-size: 1.4rem;
+  }
 }

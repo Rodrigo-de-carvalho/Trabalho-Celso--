@@ -33,6 +33,20 @@ export class ConflitoError extends ErroDaAplicacao {
   }
 }
 
+/** Não está logado, ou o token é inválido/expirado -> 401 (Unauthorized). */
+export class NaoAutenticadoError extends ErroDaAplicacao {
+  constructor(mensagem: string) {
+    super(mensagem, 401)
+  }
+}
+
+/** Está logado, mas o perfil dele não permite esta operação -> 403 (Forbidden). */
+export class NaoAutorizadoError extends ErroDaAplicacao {
+  constructor(mensagem: string) {
+    super(mensagem, 403)
+  }
+}
+
 /** Dados inválidos segundo as nossas regras de negócio -> 400 (Bad Request). */
 export class RequisicaoInvalidaError extends ErroDaAplicacao {
   constructor(mensagem: string) {

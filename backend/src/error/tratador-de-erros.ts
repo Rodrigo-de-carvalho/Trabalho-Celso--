@@ -46,9 +46,15 @@ export function tratadorDeErros(
   }
 
   // Rede de segurança: qualquer outro erro inesperado cai aqui -> status 500.
-  // Evita que o usuário veja um erro técnico gigante; mostra uma mensagem amigável.
-  // No console do servidor, porém, registramos o erro completo para conseguirmos depurar.
+  //
+  // IMPORTANTE (regra de segurança do edital): a resposta enviada ao navegador
+  // NÃO pode conter o detalhe técnico do erro. Uma mensagem do MySQL, por
+  // exemplo, revelaria nomes de tabelas e colunas — e um erro de conexão
+  // chegaria a expor usuário e senha do banco. Por isso o detalhe fica só no
+  // console do servidor (onde nós conseguimos depurar) e o usuário recebe
+  // apenas um aviso genérico.
   console.error('[ERRO INESPERADO]', erro)
-  const detalhe = erro instanceof Error ? erro.message : String(erro)
-  res.status(500).json({ mensagem: 'Ocorreu um erro inesperado: ' + detalhe })
+  res.status(500).json({
+    mensagem: 'Ocorreu um erro inesperado no servidor. Tente novamente em instantes.',
+  })
 }

@@ -22,14 +22,26 @@ export function rota(
 }
 
 /**
- * Lê o id que veio no endereço (ex: o "5" de /api/pacientes/5) e garante que é
- * mesmo um número. Se alguém chamar /api/pacientes/abc, devolvemos 400 com uma
+ * Lê o id que veio no endereço (ex: o "5" de /api/patients/5) e garante que é
+ * mesmo um número. Se alguém chamar /api/patients/abc, devolvemos 400 com uma
  * mensagem clara em vez de deixar o erro estourar lá no banco.
  */
-export function lerIdDaUrl(req: Request): number {
-  const id = Number(req.params.id)
+export function lerIdDaUrl(req: Request, nomeDoParametro = 'id'): number {
+  const id = Number(req.params[nomeDoParametro])
   if (!Number.isInteger(id) || id <= 0) {
     throw new RequisicaoInvalidaError('O id informado no endereço deve ser um número inteiro.')
   }
   return id
+}
+
+/**
+ * Lê um parâmetro de texto da URL (a parte depois do "?", como ?termo=ana).
+ *
+ * O Express entrega esse valor como texto, lista ou objeto, dependendo do que
+ * a pessoa digitar na URL. Aqui aceitamos apenas texto simples e ignoramos o
+ * resto — assim nenhum service recebe um tipo inesperado.
+ */
+export function textoDaQuery(req: Request, nome: string): string | undefined {
+  const valor = req.query[nome]
+  return typeof valor === 'string' ? valor : undefined
 }

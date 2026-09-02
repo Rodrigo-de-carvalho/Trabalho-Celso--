@@ -1,0 +1,7 @@
+{
+  // Configuração usada apenas pelo "npm run build".
+  // É a mesma do tsconfig.json, mas deixando os testes de fora: eles servem
+  // para conferir o código, não fazem parte do que vai para produção.
+  "extends": "./tsconfig.json",
+  "exclude": ["src/testes"]
+}
