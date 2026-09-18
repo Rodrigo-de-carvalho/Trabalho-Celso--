@@ -17,7 +17,12 @@ export const opcoesDeCors: CorsOptions = {
   origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
 
   // Permite os métodos HTTP que usamos no CRUD.
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  //
+  // O PATCH é indispensável: é ele que usamos para atualizar cadastros, alterar
+  // a situação de um usuário e confirmar um atendimento. Sem ele nesta lista, o
+  // navegador barra a chamada ANTES de ela chegar na API (o erro aparece no
+  // front como "Failed to fetch", sem nada no console do backend).
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 
   // Permite qualquer cabeçalho na requisição (ex: Content-Type: application/json).
   allowedHeaders: '*',

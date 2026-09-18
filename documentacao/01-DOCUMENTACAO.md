@@ -119,7 +119,7 @@ O sistema não impõe um modelo de atendimento: ele organiza a camada **administ
 | RNF07 | Uso de variáveis de ambiente | Arquivo `.env` (fora do Git); a aplicação não sobe sem `JWT_SECRET` |
 | RNF08 | Tratamento de erros | Tratador global com 400/401/403/404/409/500; erro 500 não expõe detalhe técnico |
 | RNF09 | Código versionado | Git com histórico de commits |
-| RNF10 | Testes automatizados | 17 testes com o *test runner* nativo do Node |
+| RNF10 | Testes automatizados | 18 testes com o *test runner* nativo do Node |
 | RNF11 | Organização em camadas | `entity` / `repository` / `service` / `controller` / `middleware` / `error` / `config` |
 
 ---

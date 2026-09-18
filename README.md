@@ -102,7 +102,7 @@ O sistema grava o momento exato da confirmação e, a partir daí, calcula a **t
 | Comando | Para que serve |
 |---|---|
 | `npm run dev` | Roda a API reiniciando sozinha ao salvar um arquivo |
-| `npm test` | Executa os 17 testes automatizados (não precisa do MySQL) |
+| `npm test` | Executa os 18 testes automatizados (não precisa do MySQL) |
 | `npm run typecheck` | Confere os tipos sem gerar arquivos |
 | `npm run build` | Compila o TypeScript para `dist/` |
 | `npm start` | Roda a versão compilada |

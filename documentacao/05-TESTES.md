@@ -42,12 +42,13 @@ Os testes **não precisam do MySQL**: eles exercitam justamente as camadas que b
 | 15 | A resposta de erro nunca expõe detalhes internos | Nenhum rastro de pilha, caminho de arquivo, "mysql" ou "senha" no corpo |
 | 16 | Rota inexistente responde `404` em JSON | Tratamento uniforme |
 | 17 | Id inválido no endereço responde `400` | `/api/patients/abc` não chega ao banco |
+| 18 | O CORS libera os métodos que o front usa | `GET`, `POST` e `PATCH` passam na checagem prévia do navegador |
 
 ### Resultado da última execução
 
 ```
-# tests 17
-# pass 17
+# tests 18
+# pass 18
 # fail 0
 ```
 

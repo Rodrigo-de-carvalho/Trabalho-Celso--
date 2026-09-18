@@ -130,3 +130,33 @@ test('id inválido no endereço responde 400', async () => {
 
   assert.equal(resposta.status, 400)
 })
+
+// ============================================================
+//  CORS — os métodos que o front realmente usa precisam estar liberados
+// ============================================================
+// Este teste existe por causa de um bug real: o PATCH não estava na lista de
+// métodos permitidos do CORS. As rotas funcionavam perfeitamente quando
+// chamadas por fora do navegador, mas na tela o usuário só via
+// "Failed to fetch" ao editar um cadastro ou confirmar um atendimento —
+// e nada aparecia no console do backend, porque o navegador barrava a
+// requisição na checagem prévia (preflight), antes de ela sair.
+
+test('o CORS libera todos os métodos HTTP usados pelas rotas da API', async () => {
+  for (const metodo of ['GET', 'POST', 'PATCH']) {
+    const resposta = await fetch(base + '/api/patients/1', {
+      method: 'OPTIONS',
+      headers: {
+        Origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+        'Access-Control-Request-Method': metodo,
+      },
+    })
+
+    const permitidos = resposta.headers.get('access-control-allow-methods') ?? ''
+
+    assert.ok(
+      permitidos.split(',').map((m) => m.trim()).includes(metodo),
+      `O método ${metodo} não está liberado no CORS (Allow-Methods: "${permitidos}"). ` +
+        'O navegador vai barrar a chamada e o front mostra "Failed to fetch".'
+    )
+  }
+})
