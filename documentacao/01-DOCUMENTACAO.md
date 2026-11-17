@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Produto** | PsiGestor — Plataforma de Gestão para Profissionais de Psicologia |
-| **Turma** | *(preencher)* |
-| **Data** | *(preencher)* |
+| **Turma** | Análise e Desenvolvimento de Sistemas (ADS) |
+| **Data** | 16/10/2026 |
 
 **Integrantes:**
 
@@ -18,7 +18,7 @@
 - Rodrigo de Carvalho Costa
 - Victor Costa da Cruz
 
-> **Documentos complementares:** [Diagrama ER](02-DIAGRAMA-ER.md) · [Dicionário de Dados](03-DICIONARIO-DE-DADOS.md) · [Rotas da API](04-API.md) · [Testes](05-TESTES.md) · [Manual do Usuário](06-MANUAL-DO-USUARIO.md)
+> **Documentos complementares:** [Diagrama ER](02-DIAGRAMA-ER.md) · [Dicionário de Dados](03-DICIONARIO-DE-DADOS.md) · [Rotas da API](04-API.md) · [Testes](05-TESTES.md) · [Manual do Usuário](06-MANUAL-DO-USUARIO.md) · [Relatório da Equipe](07-RELATORIO-DA-EQUIPE.md)
 
 ---
 
@@ -251,7 +251,7 @@ requisição
 
 ## 9. Instalação e execução
 
-Ver **[Manual do Usuário](06-MANUAL-DO-USUARIO.md)** e o `README.md` na raiz do repositório.
+Ver **[Manual do Usuário](06-MANUAL-DO-USUARIO.md) · [Relatório da Equipe](07-RELATORIO-DA-EQUIPE.md)** e o `README.md` na raiz do repositório.
 
 Resumo:
 

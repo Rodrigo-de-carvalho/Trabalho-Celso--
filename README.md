@@ -124,3 +124,4 @@ O sistema grava o momento exato da confirmação e, a partir daí, calcula a **t
 | [04 — Rotas da API](documentacao/04-API.md) | Endpoints, exemplos e códigos de status |
 | [05 — Testes](documentacao/05-TESTES.md) | Testes automatizados e roteiro de validação manual |
 | [06 — Manual do usuário](documentacao/06-MANUAL-DO-USUARIO.md) | Instalação passo a passo e uso de cada tela |
+| [07 — Relatório da equipe](documentacao/07-RELATORIO-DA-EQUIPE.md) | Função e atuação de cada integrante no projeto |
