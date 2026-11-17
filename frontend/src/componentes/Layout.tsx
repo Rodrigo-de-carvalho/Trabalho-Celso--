@@ -14,9 +14,12 @@ export function Layout() {
     <div className="aplicacao">
       <header className="barra-superior">
         <Link to="/" className="marca">
-          <span className="marca-icone" aria-hidden="true">
-            🧠
-          </span>
+          <img
+            className="marca-icone"
+            src={process.env.PUBLIC_URL + '/logo-psigestor.png'}
+            alt=""
+            aria-hidden="true"
+          />
           PsiGestor
         </Link>
 

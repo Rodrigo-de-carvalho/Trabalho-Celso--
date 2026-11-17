@@ -38,7 +38,12 @@ export function Login() {
     <div className="tela-de-login">
       <form className="cartao cartao-login" onSubmit={enviar}>
         <div className="marca-login">
-          <span aria-hidden="true">🧠</span>
+          <img
+            className="marca-icone"
+            src={process.env.PUBLIC_URL + '/logo-psigestor.png'}
+            alt=""
+            aria-hidden="true"
+          />
           <h1>PsiGestor</h1>
         </div>
         <p className="subtitulo">Plataforma de gestão para profissionais de Psicologia</p>
