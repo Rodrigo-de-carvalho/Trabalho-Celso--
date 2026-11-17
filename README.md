@@ -7,11 +7,11 @@ Sistema web que centraliza a gestão administrativa de profissionais de Psicolog
 
 ## Equipe
 
-- Caio de Souza Vitorino
-- Felipe Ferreira do Sacramento
-- Felipe Nascimento Caldas
-- Gabriel Coelho de Jesus Lopes
+- Gabriel Oliveira dos Santos
+- Giovana Amaral dos Santos
+- Pedro Gustavo Pereira Barbosa da Cruz
 - Rodrigo de Carvalho Costa
+- Victor Costa da Cruz
 
 ## Arquitetura
 

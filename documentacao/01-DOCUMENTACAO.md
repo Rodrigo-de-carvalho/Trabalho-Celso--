@@ -12,11 +12,11 @@
 
 **Integrantes:**
 
-- Caio de Souza Vitorino
-- Felipe Ferreira do Sacramento
-- Felipe Nascimento Caldas
-- Gabriel Coelho de Jesus Lopes
+- Gabriel Oliveira dos Santos
+- Giovana Amaral dos Santos
+- Pedro Gustavo Pereira Barbosa da Cruz
 - Rodrigo de Carvalho Costa
+- Victor Costa da Cruz
 
 > **Documentos complementares:** [Diagrama ER](02-DIAGRAMA-ER.md) · [Dicionário de Dados](03-DICIONARIO-DE-DADOS.md) · [Rotas da API](04-API.md) · [Testes](05-TESTES.md) · [Manual do Usuário](06-MANUAL-DO-USUARIO.md)
 
